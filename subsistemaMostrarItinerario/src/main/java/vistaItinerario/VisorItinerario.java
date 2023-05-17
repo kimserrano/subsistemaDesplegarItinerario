@@ -1,11 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package vistaItinerario;
 
 import ObjNegocio.Dias;
+import ObjNegocio.Especie;
 import ObjNegocio.Itinerario;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,30 +24,17 @@ import reporte.ItinerarioDataSource;
  *
  * @author eruma
  */
-public class caliz {
+public class VisorItinerario {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public VisorItinerario() {
+    }
+
+    public void reporteItinerario(Itinerario itinerario) {
         List<Itinerario> reporte= new ArrayList<Itinerario>();
-        Itinerario itiner = new Itinerario();
-        itiner.setLongitud(11.3f);
-        itiner.setMaxVisitantes(10);
-        itiner.setNombre("yorch");
-        List<Dias> dias=new ArrayList<Dias>();
-        dias.add(Dias.MIERCOLES);
-        dias.add(Dias.LUNES);
-        itiner.setDias(dias);
-        itiner.setHoraInicio(new Date());
-        itiner.setHoraFin(new Date());
-        
-        reporte.add(itiner);
-        ItinerarioDataSource reporteJasper=new ItinerarioDataSource(reporte);
-        
-        
-           try {
+        reporte.add(itinerario);
+        ItinerarioDataSource reporteJasper = new ItinerarioDataSource(reporte);
+
+        try {
             JasperReport report = (JasperReport) JRLoader.loadObjectFromFile("src\\main\\java\\reporte\\Itinerario.jasper");
             JasperPrint jPrint = JasperFillManager.fillReport(report, null, reporteJasper.getDataSource());
             JasperViewer view = new JasperViewer(jPrint, false);
@@ -54,7 +43,5 @@ public class caliz {
         } catch (JRException ex) {
             ex.getMessage();
         }
-        
     }
-    
 }

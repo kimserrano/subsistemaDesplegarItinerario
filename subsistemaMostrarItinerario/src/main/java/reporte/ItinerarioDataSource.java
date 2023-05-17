@@ -61,12 +61,12 @@ public class ItinerarioDataSource implements JRDataSource {
         
         for(int i=0; i<this.listaItinerario.size();i++){
             infoItinerario[0]=this.listaItinerario.get(i).getNombre();
-            infoItinerario[1]=String.valueOf(this.listaItinerario.get(i).getNumEspecies());
+            infoItinerario[1]=String.valueOf(this.listaItinerario.get(i).getEspecies().size());
             infoItinerario[2]=String.valueOf(this.listaItinerario.get(i).getLongitud());
             infoItinerario[3]=String.valueOf(this.listaItinerario.get(i).getMaxVisitantes());
             infoItinerario[4]=this.listaDias();
-            infoItinerario[5]="caliz";
-            infoItinerario[6]="simon";
+            infoItinerario[5]=this.listaItinerario.get(i).getHoraInicio()+" - "+this.listaItinerario.get(0).getHoraFin();
+            infoItinerario[6]=this.Animales();
         }
     }
     
